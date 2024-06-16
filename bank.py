@@ -58,6 +58,7 @@ class BankManager:
         print("Error! Account not found")
         return False
     
+    #check both accs exist before depositing and withdrawing
     def transfers(self, name1, name2, transfer_amount):
         existing_account = self.acc_check(name1)
         if existing_account is not False:
@@ -75,6 +76,4 @@ class BankManager:
         
     def manage_acc_password():
         print()
-        
-    def manage_acc_name():
-        print()
+ 
