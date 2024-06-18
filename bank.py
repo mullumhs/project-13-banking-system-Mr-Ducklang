@@ -19,7 +19,7 @@ class BankManager:
         for existing_account in self.accounts:
             if existing_account.get_name() == name:
                 return existing_account
-        return False 
+        return None 
    
     #adding accounts
     def add_account(self, account):
@@ -44,7 +44,7 @@ class BankManager:
     #managing deposits, withdrawals and transfers
     def deposits(self, name, deposit_amount):
         existing_account = self.acc_check(name)
-        if existing_account is not False:
+        if existing_account is not None:
             existing_account.deposit(deposit_amount)
             return True
         print("Error! Account not found")
@@ -52,22 +52,27 @@ class BankManager:
     
     def withdrawals(self, name, withdraw_amount):
         existing_account = self.acc_check(name)
-        if existing_account is not False:
+        if existing_account is not None:
             existing_account.withdraw(withdraw_amount)
             return True
         print("Error! Account not found")
         return False
     
-    #check both accs exist before depositing and withdrawing
+    #transfers 
     def transfers(self, name1, name2, transfer_amount):
         existing_account = self.acc_check(name1)
-        if existing_account is not False:
-            existing_account.withdraw(transfer_amount)
         existing_account2 = self.acc_check(name2)
-        if existing_account2 is not False:
+        if existing_account is not None and existing_account2 is not None:
+            try:
+                existing_account.withdraw(transfer_amount)
+            except ValueError as e:
+                print(e)
             existing_account2.deposit(transfer_amount)
             return True
-        print("Error! Account not found")
+        if existing_account is None:
+            print(f"Error! {name1} not found")
+        if existing_account2 is None:
+            print(f"Error! {name2} not found")
         return False
             
     #manage account balance, name, passwords
