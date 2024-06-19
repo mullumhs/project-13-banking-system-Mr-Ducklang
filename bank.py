@@ -74,6 +74,12 @@ class BankManager:
         if existing_account2 is None:
             print(f"Error! {name2} not found")
         return False
+    
+    #display all accounts
+    def display_accounts(self):
+        print("\n All Accounts: \n")
+        for account in self.accounts:
+            print(f"Name: {account.get_name()} \nBalance: {account.get_balance()} \n")
             
     #manage account balance, name, passwords
     def manage_acc_name():
