@@ -9,7 +9,7 @@ class Account:
     def __init__(self, name, balance, password, ):
         self.set_name(name)
         self.set_balance(balance)
-        self.set_password(password)
+        self._password = password
         
         
 #Getters

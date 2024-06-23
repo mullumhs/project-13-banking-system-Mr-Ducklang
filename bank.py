@@ -22,14 +22,14 @@ class BankManager:
         return None 
    
     #adding accounts
-    def add_account(self, account):
+    def add_account(self, name, password):
         #check for duplicate
         for existing_account in self.accounts:
-            if existing_account.get_name() == self.accounts():
+            if existing_account.get_name() == name:
                 print("Error, this account name already exists, account not added")
                 return False
         #making account
-        self.accounts.append(account)
+        self.accounts.append(Account(name, 0, password))
         return True
             
     #removing account

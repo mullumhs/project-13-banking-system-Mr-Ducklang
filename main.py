@@ -10,13 +10,13 @@ from bank import BankManager
 
 
 #define user_input functions
-
+1
 #add_account
 def add_account_ui(manager):
     name = input("New Account name: ")
     balance = 0
     password = input("Account Password: ")
-    if manager.add_account(name):
+    if manager.add_account(name, password):
         print(f"New Account: {name}, has been added!")
     else:
         print("Error! Account not added!")
@@ -49,8 +49,8 @@ def withdraw_money_ui(manager):
 #transfer money
 def transfer_money_ui(manager):
     transfer_amount = float(input("How much is being transferred? "))
-    name1 = print(f"Withdraw ${transfer_amount} from which account? ")
-    name2 = print(f"Transfer ${transfer_amount}to which account? ")
+    name1 = input(f"Withdraw ${transfer_amount} from which account? ")
+    name2 = input(f"Transfer ${transfer_amount}to which account? ")
     if manager.transfers(name1, name2, transfer_amount):
         print(f"Successfully transferred ${transfer_amount} from {name1} into {name2}")
     else:
